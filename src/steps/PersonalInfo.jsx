@@ -34,8 +34,7 @@ export default function PersonalInfo({setActiveStep}){
     setError(validationError)
 
     if(Object.keys(validationError).length === 0){
-      console.log('Submitting...')
-      setActiveStep('2')
+      setActiveStep(2)
     }
   }
 
@@ -63,6 +62,7 @@ export default function PersonalInfo({setActiveStep}){
         >
           <label 
             htmlFor="name"
+            className="info-label"
           >
             Name
             {
@@ -80,6 +80,7 @@ export default function PersonalInfo({setActiveStep}){
           </label>
           <label 
             htmlFor="email"
+            className="info-label"
           >
             Email Address
             {
@@ -97,6 +98,7 @@ export default function PersonalInfo({setActiveStep}){
           </label>
           <label 
             htmlFor="phone"
+            className="info-label"
           >
             Phone Number
             {

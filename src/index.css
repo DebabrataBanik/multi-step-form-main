@@ -131,6 +131,7 @@ li{
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-shadow: 0 0 20px -10px var(--color-grey-500);
 }
 
 .form-container h1{
@@ -150,7 +151,7 @@ li{
   gap: 1rem;
 }
 
-label{
+.info-label{
   font-size: 12px;
   color: var(--color-blue-950);
   font-weight: 500;
@@ -203,11 +204,83 @@ input::placeholder{
   background-color: var(--color-blue-950);
   border-radius: 5px;
   border: none;
+  transition: all 200ms;
+
   cursor: pointer;
+
+  &:hover{
+    background-color: hsla(213, 96%, 18%, 90%);
+  }
+
+  &:focus, &:active{
+    outline: 2px solid var(--color-blue-950);
+    outline-offset: 1px;
+  }
 }
 
 .footer .btn{
   margin-left: auto;
+}
+
+.back{
+  border: none;
+  cursor: pointer;
+  color: var(--color-grey-500);
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover{
+    color: var(--color-blue-950);
+  }
+}
+
+
+input[type='radio']{
+  display: none;
+}
+
+.plan-label{
+  border: 1px solid var(--color-grey-500);
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.plan-label:has(input[type='radio']:checked){
+  border: 1px solid var(--color-purple-600);
+  background-color: hsla(243, 100%, 62%, 5%);
+}
+
+.plan-label.plan-label:has(input[type='radio']:hover){
+  border: 1px solid var(--color-purple-600);
+}
+
+.radio-item{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.radio-item div{
+  width: 100%;
+}
+
+.radio-item h2{
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-blue-950);
+}
+
+.radio-item p{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.toggle-container{
+  padding: 1rem;
+  background-color: hsla(243, 100%, 62%, 5%);
+  border-radius: 5px;
 }
 
 @media (min-width: 500px){
