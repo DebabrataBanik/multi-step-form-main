@@ -3,13 +3,17 @@ import AdvancedIcon from '../assets/images/icon-advanced.svg'
 import ProIcon from '../assets/images/icon-pro.svg'
 import { useState } from 'react'
 
-export default function Plan({billingPlan, setBillingPlan, setActiveStep}){
+export default function Plan({isYearly, setIsYearly, setActiveStep}){
 
   const [plan, setPlan] = useState('arcade')
 
   function handleChange(e){
     console.log(e.target.value)
     setPlan(e.target.value)
+  }
+
+  function handleToggle(){
+    setIsYearly(prev => !prev)
   }
 
   function handleSubmit(e){
@@ -93,8 +97,22 @@ export default function Plan({billingPlan, setBillingPlan, setActiveStep}){
               </div>
             </div>
           </label>
-          <div className='toggle-container'>
-            {/* Toggle goes here */}
+          <div className='switch-container'>
+            <span className={!isYearly ? 'checked' : ''}>
+              Monthly
+            </span>
+            <label className='switch-label' htmlFor="switch">
+              <input
+                id='switch' 
+                className='switch'
+                type="checkbox"
+                checked={isYearly}
+                onChange={handleToggle}
+              />
+            </label>
+            <span className={isYearly ? 'checked' : ''}>
+              Yearly
+            </span>
           </div>
         </form>
       </div>

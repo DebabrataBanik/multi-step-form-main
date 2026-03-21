@@ -6,7 +6,7 @@ import { useState } from "react"
 export default function App(){
 
   const [activeStep, setActiveStep] = useState(2)
-  const [billingPlan, setBillingPlan] = useState('monthly')
+  const [isYearly, setIsYearly] = useState(false)
 
   return (
     <div className="wrapper">
@@ -17,7 +17,7 @@ export default function App(){
           <PersonalInfo setActiveStep={setActiveStep} />
           : 
           activeStep === 2 ?
-          <Plan billingPlan={billingPlan} setBillingPlan={setBillingPlan} setActiveStep={setActiveStep} />
+          <Plan isYearly={isYearly} setIsYearly={setIsYearly} setActiveStep={setActiveStep} />
           :
           'Third Page goes here'
         }
