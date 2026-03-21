@@ -8,7 +8,6 @@ export default function Plan({isYearly, setIsYearly, setActiveStep}){
   const [plan, setPlan] = useState('arcade')
 
   function handleChange(e){
-    console.log(e.target.value)
     setPlan(e.target.value)
   }
 
@@ -51,7 +50,15 @@ export default function Plan({isYearly, setIsYearly, setActiveStep}){
               <img src={ArcadeIcon} alt="icon-arcade" />
               <div>
                 <h2>Arcade</h2>
-                <p>$9/mo</p>
+                {
+                  !isYearly ?
+                  <p>$9/mo</p>
+                  :
+                  <>
+                    <p>$90/yr</p>
+                    <p className='highlight'>2 months free</p>
+                  </>
+                }
               </div>
             </div>
           </label>
@@ -72,7 +79,15 @@ export default function Plan({isYearly, setIsYearly, setActiveStep}){
               <img src={AdvancedIcon} alt="icon-advanced" />
               <div>
                 <h2>Advanced</h2>
-                <p>$12/mo</p>
+                {
+                  !isYearly ?
+                  <p>$12/mo</p>
+                  :
+                  <>
+                    <p>$120/yr</p>
+                    <p className='highlight'>2 months free</p>
+                  </>
+                }
               </div>
             </div>
           </label>
@@ -93,7 +108,15 @@ export default function Plan({isYearly, setIsYearly, setActiveStep}){
               <img src={ProIcon} alt="icon-pro" />
               <div>
                 <h2>Pro</h2>
-                <p>$15/mo</p>
+                {
+                  !isYearly ?
+                  <p>$15/mo</p>
+                  :
+                  <>
+                    <p>$150/yr</p>
+                    <p className='highlight'>2 months free</p>
+                  </>
+                }
               </div>
             </div>
           </label>

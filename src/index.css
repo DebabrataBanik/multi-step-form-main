@@ -265,8 +265,11 @@ input[type='radio']{
 
 .radio-item{
   display: flex;
-  align-items: center;
+  align-items: self-start;
   gap: 1rem;
+}
+.radio-item .highlight{
+  color: var(--color-blue-950);
 }
 
 .radio-item div{
