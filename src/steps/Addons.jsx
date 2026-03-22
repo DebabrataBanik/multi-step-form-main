@@ -1,12 +1,4 @@
-import { useState } from "react"
-
-export default function Addons({setActiveStep, isYearly}){
-
-  const [addons, setAddons] = useState({
-    online: false,
-    storage: false,
-    customize: false
-  })
+export default function Addons({setActiveStep, isYearly, addons, setAddons}){
 
   function handleChange(e){
     const {name, checked} = e.target

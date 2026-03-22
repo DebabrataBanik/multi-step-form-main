@@ -1,11 +1,8 @@
 import ArcadeIcon from '../assets/images/icon-arcade.svg'
 import AdvancedIcon from '../assets/images/icon-advanced.svg'
 import ProIcon from '../assets/images/icon-pro.svg'
-import { useState } from 'react'
 
-export default function Plan({isYearly, setIsYearly, setActiveStep}){
-
-  const [plan, setPlan] = useState('arcade')
+export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPlan}){
 
   function handleChange(e){
     setPlan(e.target.value)
