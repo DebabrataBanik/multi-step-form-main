@@ -140,7 +140,6 @@ li{
 }
 
 .form-container p{
-  width: 90%;
   line-height: 1.5;
   color: var(--color-grey-500);
 }
@@ -230,7 +229,7 @@ input::placeholder{
   font-size: 14px;
   font-weight: 500;
 
-  &:hover{
+  &:hover, &:focus{
     color: var(--color-blue-950);
   }
 }
@@ -302,7 +301,7 @@ input[type='radio']{
   color: var(--color-blue-950);
 }
 
-.switch{
+input[type='checkbox']{
   position: absolute;
   opacity: 0;
   width: 0;
@@ -331,8 +330,73 @@ input[type='radio']{
   }
 }
 
+.switch-label:has(input:focus-visible){
+  outline: 1px solid var(--color-blue-950);
+  outline-offset: 1px;
+}
+
 .switch-label:has(input:checked)::before {
   transform: translateY(-50%) translateX(18px);
+}
+
+.addon-label{
+  border: 1px solid var(--color-grey-500);
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+  position: relative;
+
+  &:hover, &:active, &:focus{
+    border: 1px solid var(--color-purple-600);
+  }
+
+  &::before{
+    position: relative;
+    content: '';
+    min-width: 20px;
+    height: 20px;
+    margin-right: 14px;
+    border: 1px solid var(--color-grey-500);
+    border-radius: 5px;
+  }
+}
+
+.addon-label:has(input:focus-visible){
+  outline: 1px solid var(--color-purple-600);
+  outline-offset: 2px;
+}
+
+.addon-label:has(input:checked){
+  border: 1px solid var(--color-purple-600);
+  background-color: hsla(243, 100%, 62%, 5%);
+}
+.addon-label:has(input:checked)::before{
+  content: url(./assets/images/icon-checkmark.svg);
+  background-color: var(--color-purple-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.addon-label h2{
+  font-size: 16px;
+  color: var(--color-blue-950);
+}
+
+.addon-label p{
+  line-height: normal;
+  font-size: 14px;
+}
+
+.addon-label span{
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--color-purple-600);
+  font-weight: 500;
 }
 
 @media (min-width: 500px){

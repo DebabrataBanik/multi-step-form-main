@@ -1,6 +1,7 @@
 import PersonalInfo from "./steps/PersonalInfo"
 import Plan from "./steps/Plan"
 import Steps from "./components/Steps"
+import Addons from "./steps/Addons"
 import { useState } from "react"
 
 export default function App(){
@@ -19,7 +20,7 @@ export default function App(){
           activeStep === 2 ?
           <Plan isYearly={isYearly} setIsYearly={setIsYearly} setActiveStep={setActiveStep} />
           :
-          'Third Page goes here'
+          <Addons setActiveStep={setActiveStep} isYearly={isYearly} />
         }
       </div>
     </div>
