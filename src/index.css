@@ -481,6 +481,25 @@ input[type='checkbox']{
   }
 }
 
+.success-content{
+  padding-block: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-content p{
+  text-align: center;
+}
+
+.check{
+  width: 70px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
 @media (min-width: 500px){
   .wrapper{
     display: flex;

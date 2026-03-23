@@ -49,7 +49,7 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
   }
 
   function handleConfirm(){
-    console.log('Confirmed')
+    setActiveStep(5)
   }
 
   function redirect(e){

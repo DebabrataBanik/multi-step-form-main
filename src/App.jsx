@@ -2,8 +2,9 @@ import PersonalInfo from "./steps/PersonalInfo"
 import Plan from "./steps/Plan"
 import Steps from "./components/Steps"
 import Addons from "./steps/Addons"
-import { useState } from "react"
 import Confirmation from "./steps/Confirmation"
+import Success from "./steps/Success"
+import { useState } from "react"
 
 export default function App(){
 
@@ -28,9 +29,12 @@ export default function App(){
           <Plan isYearly={isYearly} setIsYearly={setIsYearly} setActiveStep={setActiveStep} plan={plan} setPlan={setPlan} />
           :
           activeStep === 3 ?
-          <Addons setActiveStep={setActiveStep} isYearly={isYearly} addons={addons} setAddons={setAddons} />
+          <Addons setActiveStep={setActiveStep} isYearly={isYearly} addons={addons} setAddons={setAddons} /> 
           :
+          activeStep === 4 ?
           <Confirmation plan={plan} addons={addons} setActiveStep={setActiveStep} isYearly={isYearly} />
+          : 
+          <Success />
         }
       </div>
     </div>
