@@ -85,36 +85,38 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
             </span>
           </div>
 
-          <div className="addons">
-            {
-              selectedAddons.map((addon, idx) => {
+          {
+            selectedAddons.length > 0 &&
+            <div className="addons">
+              {
+                selectedAddons.map(addon => {
 
-                const {title, price} = ADDONS[billing][addon]
-                const unit = isYearly ? 'yr' : 'mo'
+                  const {title, price} = ADDONS[billing][addon]
+                  const unit = isYearly ? 'yr' : 'mo'
 
-                return (
-                <p key={`${idx}-${addon}`}>
-                  {title}
-                  <span>
-                    {`+$${price}/${unit}`}
-                  </span>
-                </p>
-              )
-              })
-            }
+                  return (
+                  <p key={addon}>
+                    {title}
+                    <span>
+                      {`+$${price}/${unit}`}
+                    </span>
+                  </p>
+                )
+                })
+              }
+            </div>
+          }
 
           </div>
-
+          <p className="total">Total {!isYearly ? '(per month)' : '(per year)'}
+            <span>
+              {
+                !isYearly ? `$${totalPlanPrice}/mo` : `$${totalPlanPrice}/yr`
+              }
+            </span>
+          </p>
         </div>
-        <p className="total">Total {!isYearly ? '(per month)' : '(per year)'}
-          <span>
-            {
-              !isYearly ? `$${totalPlanPrice}/mo` : `$${totalPlanPrice}/yr`
-            }
-          </span>
-        </p>
-      </div>
-      <div className="footer">
+        <div className="footer">
         <button 
           onClick={handleBackNav} className='back'
         >
