@@ -3,10 +3,11 @@ import Plan from "./steps/Plan"
 import Steps from "./components/Steps"
 import Addons from "./steps/Addons"
 import { useState } from "react"
+import Confirmation from "./steps/Confirmation"
 
 export default function App(){
 
-  const [activeStep, setActiveStep] = useState(2)
+  const [activeStep, setActiveStep] = useState(4)
   const [isYearly, setIsYearly] = useState(false)
   const [plan, setPlan] = useState('arcade')
   const [addons, setAddons] = useState({
@@ -29,7 +30,7 @@ export default function App(){
           activeStep === 3 ?
           <Addons setActiveStep={setActiveStep} isYearly={isYearly} addons={addons} setAddons={setAddons} />
           :
-          'Confirmation Page'
+          <Confirmation plan={plan} setActiveStep={setActiveStep} isYearly={isYearly} />
         }
       </div>
     </div>
