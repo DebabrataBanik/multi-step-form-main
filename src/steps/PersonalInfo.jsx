@@ -52,7 +52,7 @@ export default function PersonalInfo({setActiveStep}){
 
   return (
     <>
-      <div className="form-container">
+      <div className="card-wrapper">
         <h1>Personal info</h1>
         <p>Please provide your name, email address, and phone number.</p>
         <form 

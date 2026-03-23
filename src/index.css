@@ -122,7 +122,7 @@ li{
   color: var(--color-blue-950);
 }
 
-.form-container{
+.card-wrapper{
   margin: 1rem;
   padding: 1.5rem;
   padding-block: 2rem;
@@ -134,12 +134,12 @@ li{
   box-shadow: 0 0 20px -10px var(--color-grey-500);
 }
 
-.form-container h1{
+.card-wrapper h1{
   font-size: 24px;
   color: var(--color-blue-950);
 }
 
-.form-container p{
+.card-wrapper p{
   line-height: 1.5;
   color: var(--color-grey-500);
 }

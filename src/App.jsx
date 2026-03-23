@@ -8,7 +8,7 @@ import { useState } from "react"
 
 export default function App(){
 
-  const [activeStep, setActiveStep] = useState(4)
+  const [activeStep, setActiveStep] = useState(1)
   const [isYearly, setIsYearly] = useState(false)
   const [plan, setPlan] = useState('arcade')
   const [addons, setAddons] = useState({

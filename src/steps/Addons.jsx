@@ -19,7 +19,7 @@ export default function Addons({setActiveStep, isYearly, addons, setAddons}){
 
   return (
     <>
-      <div className="form-container">
+      <div className="card-wrapper">
         <h1>Pick add-ons</h1>
         <p>Add-ons help enhance your gaming experience.</p>
         <form

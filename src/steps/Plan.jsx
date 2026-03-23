@@ -23,7 +23,7 @@ export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPla
 
   return (
     <>
-      <div className="form-container">
+      <div className="card-wrapper">
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
         <form

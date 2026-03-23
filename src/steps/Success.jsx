@@ -2,7 +2,7 @@ import Thankyou from '../assets/images/icon-thank-you.svg'
 
 export default function Success(){
   return (
-    <div className="form-container">
+    <div className="card-wrapper">
       <div className='success-content'>
         <img className='check' src={Thankyou} alt="icon-thank-you" />
         <h1>Thank you!</h1>
