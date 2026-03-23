@@ -1,4 +1,48 @@
-export default function Confirmation({plan, setActiveStep, isYearly}){
+const PLAN = {
+  monthly: {
+    arcade: 9,
+    advanced: 12,
+    pro: 15
+  }, 
+  yearly: {
+    arcade: 90,
+    advanced: 120,
+    pro: 150
+  }
+}
+
+const ADDONS = {
+  monthly: {
+    online: {
+      title: 'Online service',
+      price: 1
+    },
+    storage: {
+      title: 'Larger storage',
+      price: 2
+    },
+    customize: {
+      title: 'Customizable Profile',
+      price: 2
+    }
+  },
+  yearly: {
+    online: {
+      title: 'Online service',
+      price: 10
+    },
+    storage: {
+      title: 'Larger storage',
+      price: 20
+    },
+    customize: {
+      title: 'Customizable Profile',
+      price: 20
+    }
+  }
+}
+
+export default function Confirmation({plan, addons, setActiveStep, isYearly}){
 
   function handleBackNav(){
     setActiveStep(3)
@@ -13,7 +57,13 @@ export default function Confirmation({plan, setActiveStep, isYearly}){
     setActiveStep(2)
   }
 
+  const selectedAddons = Object.keys(addons).filter(key => addons[key])
+
   const selectedPlan = plan[0].toUpperCase() + plan.slice(1)
+
+  const billing = isYearly ? 'yearly' : 'monthly'
+  const addonsTotal = selectedAddons.reduce((acc, cur) => (acc+(ADDONS[billing][cur].price)), 0)
+  const totalPlanPrice = PLAN[billing][plan]+addonsTotal
 
   return (
     <>
@@ -30,33 +80,36 @@ export default function Confirmation({plan, setActiveStep, isYearly}){
             </div>
             <span>
               {
-                !isYearly ? '$9/mo' : '$90/yr'
+                !isYearly ? `$${PLAN.monthly[plan]}/mo` : `$${PLAN.yearly[plan]}/yr`
               }
             </span>
           </div>
+
           <div className="addons">
-            <p>
-              Online service
-              <span>
-                {
-                  !isYearly ? '$1/mo' : '$10/yr'
-                }
-              </span>
-            </p>
-            <p>
-              Larger storage
-              <span>
-                {
-                  !isYearly ? '$2/mo' : '$20/yr'
-                }
-              </span>
-            </p>
+            {
+              selectedAddons.map((addon, idx) => {
+
+                const {title, price} = ADDONS[billing][addon]
+                const unit = isYearly ? 'yr' : 'mo'
+
+                return (
+                <p key={`${idx}-${addon}`}>
+                  {title}
+                  <span>
+                    {`+$${price}/${unit}`}
+                  </span>
+                </p>
+              )
+              })
+            }
+
           </div>
+
         </div>
         <p className="total">Total {!isYearly ? '(per month)' : '(per year)'}
           <span>
             {
-              !isYearly ? '$12/mo' : '$120/yr'
+              !isYearly ? `$${totalPlanPrice}/mo` : `$${totalPlanPrice}/yr`
             }
           </span>
         </p>

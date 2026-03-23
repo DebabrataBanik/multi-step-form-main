@@ -30,7 +30,7 @@ export default function App(){
           activeStep === 3 ?
           <Addons setActiveStep={setActiveStep} isYearly={isYearly} addons={addons} setAddons={setAddons} />
           :
-          <Confirmation plan={plan} setActiveStep={setActiveStep} isYearly={isYearly} />
+          <Confirmation plan={plan} addons={addons} setActiveStep={setActiveStep} isYearly={isYearly} />
         }
       </div>
     </div>
