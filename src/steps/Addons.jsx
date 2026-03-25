@@ -1,3 +1,5 @@
+import { ADDONS } from "../util"
+
 export default function Addons({setActiveStep, isYearly, addons, setAddons}){
 
   function handleChange(e){
@@ -17,6 +19,9 @@ export default function Addons({setActiveStep, isYearly, addons, setAddons}){
     setActiveStep(2)
   }
 
+  const billing = isYearly ? 'yearly' : 'monthly'
+  const addonItems = Object.keys(ADDONS)
+
   return (
     <>
       <div className="card-wrapper">
@@ -27,71 +32,35 @@ export default function Addons({setActiveStep, isYearly, addons, setAddons}){
           onSubmit={handleSubmit}
           className="form"
         >
-          <label 
-            htmlFor="online"
-            className="addon-label"
-          >
-            <input
-              id="online"
-              name="online"
-              type="checkbox"
-              onChange={handleChange}
-              checked={addons.online}
-            />
-            <div>
-              <h2>Online service</h2>
-              <p>Access to multiplayes games</p>
-            </div>
-            <span>
-              {
-                !isYearly ? '$1/mo' : '$10/yr'
-              }
-            </span>
-          </label>
+          {
+            addonItems.map(item => {
+              const {title, desc} = ADDONS[item]
+              const price = ADDONS[item][billing]
+              const unit = isYearly ? 'yr' : 'mo'
+              
+              return (
+                <label
+                  key={item}
+                  htmlFor={item}
+                  className="addon-label"
+                >
+                  <input
+                    id={item}
+                    name={item}
+                    type="checkbox"
+                    onChange={handleChange}
+                    checked={addons[item]}
+                  />
+                  <div>
+                    <h2>{title}</h2>
+                    <p>{desc}</p>
+                  </div>
+                  <span>{`$${price}/${unit}`}</span>
+                </label>
+              )
+            })
+          }
 
-          <label 
-            htmlFor="storage"
-            className="addon-label"
-          >
-            <input
-              id="storage"
-              name="storage"
-              type="checkbox"
-              onChange={handleChange}
-              checked={addons.storage}
-            />
-            <div>
-              <h2>Larger storage</h2>
-              <p>Extra 1TB of cloud save</p>
-            </div>
-            <span>
-              {
-                !isYearly ? '$2/mo' : '$20/yr'
-              }
-            </span>
-          </label>
-
-          <label 
-            htmlFor="customize"
-            className="addon-label"
-          >
-            <input
-              id="customize"
-              name="customize"
-              type="checkbox"
-              onChange={handleChange}
-              checked={addons.customize}
-            />
-            <div>
-              <h2>Customizable Profile</h2>
-              <p>Custom theme on your profile</p>
-            </div>
-            <span>
-              {
-                !isYearly ? '$2/mo' : '$20/yr'
-              }
-            </span>
-          </label>
         </form>
       </div>
       <div className="footer">

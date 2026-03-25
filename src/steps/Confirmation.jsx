@@ -1,46 +1,4 @@
-const PLAN = {
-  monthly: {
-    arcade: 9,
-    advanced: 12,
-    pro: 15
-  }, 
-  yearly: {
-    arcade: 90,
-    advanced: 120,
-    pro: 150
-  }
-}
-
-const ADDONS = {
-  monthly: {
-    online: {
-      title: 'Online service',
-      price: 1
-    },
-    storage: {
-      title: 'Larger storage',
-      price: 2
-    },
-    customize: {
-      title: 'Customizable Profile',
-      price: 2
-    }
-  },
-  yearly: {
-    online: {
-      title: 'Online service',
-      price: 10
-    },
-    storage: {
-      title: 'Larger storage',
-      price: 20
-    },
-    customize: {
-      title: 'Customizable Profile',
-      price: 20
-    }
-  }
-}
+import { PLAN, ADDONS } from "../util"
 
 export default function Confirmation({plan, addons, setActiveStep, isYearly}){
 
@@ -62,8 +20,9 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
   const selectedPlan = plan[0].toUpperCase() + plan.slice(1)
 
   const billing = isYearly ? 'yearly' : 'monthly'
-  const addonsTotal = selectedAddons.reduce((acc, cur) => (acc+(ADDONS[billing][cur].price)), 0)
-  const totalPlanPrice = PLAN[billing][plan]+addonsTotal
+  const unit = isYearly ? 'yr' : 'mo'
+  const addonsTotal = selectedAddons.reduce((acc, cur) => (acc+(ADDONS[cur][billing])), 0)
+  const totalPlanPrice = PLAN[plan][billing]+addonsTotal
 
   return (
     <>
@@ -78,11 +37,7 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
                 Change
               </button>
             </div>
-            <span>
-              {
-                !isYearly ? `$${PLAN.monthly[plan]}/mo` : `$${PLAN.yearly[plan]}/yr`
-              }
-            </span>
+            <span>{`$${PLAN[plan][billing]}/${unit}`}</span>
           </div>
 
           {
@@ -91,7 +46,8 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
               {
                 selectedAddons.map(addon => {
 
-                  const {title, price} = ADDONS[billing][addon]
+                  const title = ADDONS[addon].title
+                  const price = ADDONS[addon][billing]
                   const unit = isYearly ? 'yr' : 'mo'
 
                   return (
@@ -109,11 +65,7 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
 
           </div>
           <p className="total">Total {!isYearly ? '(per month)' : '(per year)'}
-            <span>
-              {
-                !isYearly ? `$${totalPlanPrice}/mo` : `$${totalPlanPrice}/yr`
-              }
-            </span>
+            <span>{`$${totalPlanPrice}/${unit}`}</span>
           </p>
         </div>
         <div className="footer">

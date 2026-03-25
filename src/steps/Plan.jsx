@@ -1,6 +1,4 @@
-import ArcadeIcon from '../assets/images/icon-arcade.svg'
-import AdvancedIcon from '../assets/images/icon-advanced.svg'
-import ProIcon from '../assets/images/icon-pro.svg'
+import { PLAN } from '../util'
 
 export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPlan}){
 
@@ -21,6 +19,9 @@ export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPla
     setActiveStep(1)
   }
 
+  const billing = isYearly ? 'yearly' : 'monthly'
+  const planItems = Object.keys(PLAN)
+
   return (
     <>
       <div className="card-wrapper">
@@ -31,92 +32,47 @@ export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPla
           onSubmit={handleSubmit}
           className="form"
         >
-          <label 
-            className='plan-label'
-            htmlFor="arcade"
-          >
-            <input
-              id='arcade'
-              type="radio"
-              name='plan'
-              value='arcade'
-              onChange={handleChange}
-              checked={plan === 'arcade'}
-            />
-            <div className='radio-item'>
-              <img src={ArcadeIcon} alt="icon-arcade" />
-              <div>
-                <h2>Arcade</h2>
-                {
-                  !isYearly ?
-                  <p>$9/mo</p>
-                  :
-                  <>
-                    <p>$90/yr</p>
-                    <p className='highlight'>2 months free</p>
-                  </>
-                }
-              </div>
-            </div>
-          </label>
+          {
+            planItems.map(item => {
 
-          <label 
-            className='plan-label'
-            htmlFor="advanced"
-          >
-            <input
-              id='advanced'
-              type="radio"
-              name='plan' 
-              value='advanced'
-              onChange={handleChange}
-              checked={plan === 'advanced'}
-            />
-            <div className='radio-item'>
-              <img src={AdvancedIcon} alt="icon-advanced" />
-              <div>
-                <h2>Advanced</h2>
-                {
-                  !isYearly ?
-                  <p>$12/mo</p>
-                  :
-                  <>
-                    <p>$120/yr</p>
-                    <p className='highlight'>2 months free</p>
-                  </>
-                }
-              </div>
-            </div>
-          </label>
+              const {title, icon} = PLAN[item]
+              const price = PLAN[item][billing]
+              const unit = isYearly ? 'yr' : 'mo'
 
-          <label 
-            className='plan-label'
-            htmlFor="pro"
-          >
-            <input 
-              id="pro" 
-              type="radio" 
-              name="plan"
-              value='pro'
-              onChange={handleChange}
-              checked={plan === 'pro'}
-            />
-            <div className='radio-item'>
-              <img src={ProIcon} alt="icon-pro" />
-              <div>
-                <h2>Pro</h2>
-                {
-                  !isYearly ?
-                  <p>$15/mo</p>
-                  :
-                  <>
-                    <p>$150/yr</p>
-                    <p className='highlight'>2 months free</p>
-                  </>
-                }
-              </div>
-            </div>
-          </label>
+              return (
+                <label
+                  key={item}
+                  className='plan-label'
+                  htmlFor={item}
+                >
+                  <input
+                    id={item}
+                    type="radio"
+                    name='plan'
+                    value={item}
+                    onChange={handleChange}
+                    checked={plan === item}
+                  />
+                  <div className='radio-item'>
+                    <img src={icon} alt={`icon-${item}`} />
+                    <div>
+                      <h2>{title}</h2>
+                      {
+                        !isYearly ?
+                        <p>{`$${price}/${unit}`}</p>
+                        :
+                        <>
+                          <p>{`$${price}/${unit}`}</p>
+                          <p className='highlight'>2 months free</p>
+                        </>
+                      }
+                    </div>
+                  </div>
+                </label>
+              )
+            })
+          }
+
           <div className='switch-container'>
             <span className={!isYearly ? 'checked' : ''}>
               Monthly
