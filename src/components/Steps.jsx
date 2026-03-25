@@ -1,7 +1,7 @@
 export default function Steps({activeStep}){
   return (
     <div className="steps-container">
-      <ul>
+      <ul aria-label="Form steps">
         <li className={`step ${+activeStep === 1 ? 'active' : ''}`}>1</li>
         <li className={`step ${+activeStep === 2 ? 'active' : ''}`}>2</li>
         <li className={`step ${+activeStep === 3 ? 'active' : ''}`}>3</li>

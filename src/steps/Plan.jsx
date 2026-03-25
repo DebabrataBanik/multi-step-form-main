@@ -128,6 +128,7 @@ export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPla
                 type="checkbox"
                 checked={isYearly}
                 onChange={handleToggle}
+                aria-label={`Billing period: ${isYearly ? 'Yearly' : 'Monthly'}`}
               />
             </label>
             <span className={isYearly ? 'checked' : ''}>

@@ -74,7 +74,7 @@ export default function PersonalInfo({setActiveStep}){
               type="text"
               placeholder="e.g. Stephen King"
               className={error.username ? 'error' : ''}
-              value={formData.name}
+              value={formData.username}
               onChange={handleChange}
             />
           </label>

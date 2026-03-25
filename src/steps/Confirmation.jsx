@@ -117,17 +117,17 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
           </p>
         </div>
         <div className="footer">
-        <button 
-          onClick={handleBackNav} className='back'
-        >
-          Go Back
-        </button>
-        <button  
-          onClick={handleConfirm}
-          className="btn confirm"
-        >
-          Confirm
-        </button>
+          <button 
+            onClick={handleBackNav} className='back'
+          >
+            Go Back
+          </button>
+          <button  
+            onClick={handleConfirm}
+            className="btn confirm"
+          >
+            Confirm
+          </button>
       </div>
     </>
   )
