@@ -8,6 +8,11 @@ import { useState } from "react"
 
 export default function App(){
 
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    phone: ''
+  })
   const [activeStep, setActiveStep] = useState(1)
   const [isYearly, setIsYearly] = useState(false)
   const [plan, setPlan] = useState('arcade')
@@ -23,7 +28,7 @@ export default function App(){
         <Steps activeStep={activeStep} />
         {
           activeStep === 1 ? 
-          <PersonalInfo setActiveStep={setActiveStep} />
+          <PersonalInfo formData={formData} setFormData={setFormData} setActiveStep={setActiveStep} />
           : 
           activeStep === 2 ?
           <Plan isYearly={isYearly} setIsYearly={setIsYearly} setActiveStep={setActiveStep} plan={plan} setPlan={setPlan} />

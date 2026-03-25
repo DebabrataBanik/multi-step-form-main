@@ -1,12 +1,7 @@
 import { useState } from "react"
 
-export default function PersonalInfo({setActiveStep}){
+export default function PersonalInfo({formData, setFormData, setActiveStep}){
 
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    phone: ''
-  })
   const [error, setError] = useState({
     username: false,
     email: false,
@@ -15,21 +10,25 @@ export default function PersonalInfo({setActiveStep}){
 
   function validateEmail(email){
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return regex.test(email)
+    return regex.test(email.trim())
+  }
+
+  function validatePhone(phone) {
+    return /^[\d\s\+\-\(\)]+$/.test(phone.trim())
   }
 
   function handleSubmit(e){
     e.preventDefault()
     const {username, email, phone} = formData
     const validationError = {}
-    if(!validateEmail(email.trim())){
+    if(!validateEmail(email)){
       validationError.email = 'Enter valid email'
     }
     if(!username.trim()){
       validationError.username = 'This field is required'
     }
-    if(!phone.trim()){
-      validationError.phone = 'This field is required'
+    if(!validatePhone(phone)){
+      validationError.phone = 'Enter valid phone number'
     }
     setError(validationError)
 
@@ -107,7 +106,7 @@ export default function PersonalInfo({setActiveStep}){
             <input
               name="phone"
               id="phone"
-              type="number"
+              type="tel"
               placeholder="e.g. +1 234 567 890"
               className={error.phone ? 'error' : ''}
               value={formData.phone}
