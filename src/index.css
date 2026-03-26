@@ -214,7 +214,7 @@ input::placeholder{
   background-color: var(--color-blue-950);
   border-radius: 5px;
   border: none;
-  transition: all 200ms;
+  transition: background-color 200ms ease;
   cursor: pointer;
 
   &:hover{
@@ -246,10 +246,13 @@ input::placeholder{
 
 
 input[type='radio']{
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+  position: absolute; 
+  inset: auto; 
+  clip: rect(0 0 0 0); 
+  width: 1px; 
+  height: 1px; 
+  overflow: hidden; 
+  white-space: nowrap;
 }
 
 .plan-label{
@@ -257,6 +260,7 @@ input[type='radio']{
   border-radius: 10px;
   padding: 1rem;
   cursor: pointer;
+  transition: border 200ms ease;
 }
 
 .plan-label:has(input[type='radio']:checked){
@@ -264,7 +268,7 @@ input[type='radio']{
   background-color: hsla(243, 100%, 62%, 5%);
 }
 
-.plan-label.plan-label:has(input[type='radio']:hover){
+.plan-label:has(input[type='radio']:hover){
   border: 1px solid var(--color-purple-600);
 }
 .plan-label:has(input[type='radio']:focus-visible) {
@@ -312,10 +316,13 @@ input[type='radio']{
 }
 
 input[type='checkbox']{
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+  position: absolute; 
+  inset: auto; 
+  clip: rect(0 0 0 0); 
+  width: 1px; 
+  height: 1px; 
+  overflow: hidden; 
+  white-space: nowrap;
 }
 
 .switch-label{
@@ -336,7 +343,7 @@ input[type='checkbox']{
     left: 5px;
     top: 50%;
     transform: translateY(-50%);
-    transition: all 300ms ease;
+    transition: transform 300ms ease;
   }
 }
 
@@ -356,7 +363,7 @@ input[type='checkbox']{
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: all 200ms ease;
+  transition: border 200ms ease;
   position: relative;
 
   &:hover, &:active, &:focus{
