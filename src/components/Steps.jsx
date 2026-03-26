@@ -1,36 +1,48 @@
+const steps = [
+  {
+    id: 1, label: 'YOUR INFO'
+  },
+  {
+    id: 2, label: 'SELECT PLAN'
+  },
+  {
+    id: 3, label: 'ADD-ONS'
+  },
+  {
+    id: 4, label: 'SUMMARY'
+  }
+]
+
+
 export default function Steps({activeStep}){
   return (
     <div className="steps-container">
-      <ul aria-label="Form steps">
-        <li>
-          <span className={`step ${+activeStep === 1 ? 'active' : ''}`}>1</span>
-          <div className="step-info">
-            <span>STEP 1</span>
-            <p>YOUR INFO</p>
-          </div>
-        </li>
-        <li>
-          <span className={`step ${+activeStep === 2 ? 'active' : ''}`}>2</span>
-          <div className="step-info">
-            <span>STEP 2</span>
-            <p>SELECT PLAN</p>
-          </div>
-        </li>
-        <li>
-          <span className={`step ${+activeStep === 3 ? 'active' : ''}`}>3</span>
-          <div className="step-info">
-            <span>STEP 3</span>
-            <p>ADD-ONS</p>
-          </div>
-        </li>
-        <li>
-          <span className={`step ${+activeStep >= 4 ? 'active' : ''}`}>4</span>
-          <div className="step-info">
-            <span>STEP 4</span>
-            <p>SUMMARY</p>
-          </div>
-        </li>
-      </ul>
+      <ol aria-label="Form steps">
+        
+        {
+          steps.map(step => {
+            const isCurrentStep = activeStep === step.id
+            const isComplete = step.id === 4 && activeStep > 4
+            const isActive = isCurrentStep || isComplete
+
+            return (
+              <li 
+                key={step.id}
+                aria-current={isActive ? 'step' : undefined}
+              >
+                <span className={`step ${isActive ? 'active' : ''}`}>
+                  {step.id}
+                </span>
+                <div className="step-info">
+                  <span>STEP {step.id}</span>
+                  <p>{step.label}</p>
+                </div>
+              </li>
+            )
+          })
+        }
+        
+      </ol>
     </div>
   )
 }

@@ -58,6 +58,7 @@ export default function PersonalInfo({formData, setFormData, setActiveStep}){
           id="personal-info"
           onSubmit={handleSubmit} 
           className="form info-web-layout"
+          noValidate
         >
           <label 
             htmlFor="name"
@@ -88,7 +89,7 @@ export default function PersonalInfo({formData, setFormData, setActiveStep}){
             <input
               name="email"
               id="email"
-              type="text"
+              type="email"
               placeholder="e.g. stephenking@lorem.com"
               className={error.email ? 'error' : ''}
               value={formData.email}
