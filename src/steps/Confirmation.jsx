@@ -25,7 +25,7 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
   const totalPlanPrice = PLAN[plan][billing]+addonsTotal
 
   return (
-    <>
+    <div>
       <div className="card-wrapper">
         <h1>Finishing up</h1>
         <p>Double-check everything looks OK before confirming.</p>
@@ -65,7 +65,7 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
 
           </div>
           <p className="total">Total {!isYearly ? '(per month)' : '(per year)'}
-            <span>{`$${totalPlanPrice}/${unit}`}</span>
+            <span>{`+$${totalPlanPrice}/${unit}`}</span>
           </p>
         </div>
         <div className="footer">
@@ -81,6 +81,6 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
             Confirm
           </button>
       </div>
-    </>
+    </div>
   )
 }

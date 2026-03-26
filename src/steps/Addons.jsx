@@ -23,14 +23,14 @@ export default function Addons({setActiveStep, isYearly, addons, setAddons}){
   const addonItems = Object.keys(ADDONS)
 
   return (
-    <>
+    <div>
       <div className="card-wrapper">
         <h1>Pick add-ons</h1>
         <p>Add-ons help enhance your gaming experience.</p>
         <form
           id="add-ons"
           onSubmit={handleSubmit}
-          className="form"
+          className="form addon-web-layout"
         >
           {
             addonItems.map(item => {
@@ -69,6 +69,6 @@ export default function Addons({setActiveStep, isYearly, addons, setAddons}){
           Next Step
         </button>
       </div>
-    </>
+    </div>
   )
 }

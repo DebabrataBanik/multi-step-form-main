@@ -50,14 +50,14 @@ export default function PersonalInfo({formData, setFormData, setActiveStep}){
   }
 
   return (
-    <>
+    <div>
       <div className="card-wrapper">
         <h1>Personal info</h1>
         <p>Please provide your name, email address, and phone number.</p>
         <form 
           id="personal-info"
           onSubmit={handleSubmit} 
-          className="form"
+          className="form info-web-layout"
         >
           <label 
             htmlFor="name"
@@ -118,6 +118,6 @@ export default function PersonalInfo({formData, setFormData, setActiveStep}){
       <div className="footer">
         <button form="personal-info" className="btn">Next Step</button>
       </div>
-    </>
+    </div>
   )
 }

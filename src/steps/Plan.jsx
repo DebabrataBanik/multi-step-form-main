@@ -23,14 +23,14 @@ export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPla
   const planItems = Object.keys(PLAN)
 
   return (
-    <>
+    <div>
       <div className="card-wrapper">
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
         <form
           id="plan"
           onSubmit={handleSubmit}
-          className="form"
+          className="form plan-web-layout"
         >
           {
             planItems.map(item => {
@@ -99,6 +99,6 @@ export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPla
           Next Step
         </button>
       </div>
-    </>
+    </div>
   )
 }
