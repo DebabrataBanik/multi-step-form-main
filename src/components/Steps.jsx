@@ -16,7 +16,7 @@ const steps = [
 
 export default function Steps({activeStep}){
   return (
-    <div className="steps-container">
+    <aside className="steps-container">
       <ol aria-label="Form steps">
         
         {
@@ -43,6 +43,6 @@ export default function Steps({activeStep}){
         }
         
       </ol>
-    </div>
+    </aside>
   )
 }

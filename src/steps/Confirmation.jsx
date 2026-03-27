@@ -1,4 +1,5 @@
 import { PLAN, ADDONS } from "../util"
+import Footer from "../components/Footer"
 
 export default function Confirmation({plan, addons, setActiveStep, isYearly}){
 
@@ -25,7 +26,7 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
   const totalPlanPrice = PLAN[plan][billing]+addonsTotal
 
   return (
-    <div>
+    <main>
       <div className="card-wrapper">
         <h1>Finishing up</h1>
         <p>Double-check everything looks OK before confirming.</p>
@@ -68,7 +69,7 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
             <span>{`+$${totalPlanPrice}/${unit}`}</span>
           </p>
         </div>
-        <div className="footer">
+        <Footer>
           <button 
             onClick={handleBackNav} className='back'
           >
@@ -80,7 +81,7 @@ export default function Confirmation({plan, addons, setActiveStep, isYearly}){
           >
             Confirm
           </button>
-      </div>
-    </div>
+      </Footer>
+    </main>
   )
 }

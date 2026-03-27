@@ -1,4 +1,5 @@
 import { PLAN } from '../util'
+import Footer from '../components/Footer'
 
 export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPlan}){
 
@@ -23,7 +24,7 @@ export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPla
   const planItems = Object.keys(PLAN)
 
   return (
-    <div>
+    <main>
       <div className="card-wrapper">
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
@@ -93,12 +94,12 @@ export default function Plan({isYearly, setIsYearly, setActiveStep, plan, setPla
           </div>
         </form>
       </div>
-      <div className="footer">
+      <Footer>
         <button onClick={handleBackNav} className='back'>Go Back</button>
         <button className="btn" form="plan">
           Next Step
         </button>
-      </div>
-    </div>
+      </Footer>
+    </main>
   )
 }

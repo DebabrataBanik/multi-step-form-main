@@ -1,4 +1,5 @@
 import { ADDONS } from "../util"
+import Footer from "../components/Footer"
 
 export default function Addons({setActiveStep, isYearly, addons, setAddons}){
 
@@ -23,7 +24,7 @@ export default function Addons({setActiveStep, isYearly, addons, setAddons}){
   const addonItems = Object.keys(ADDONS)
 
   return (
-    <div>
+    <main>
       <div className="card-wrapper">
         <h1>Pick add-ons</h1>
         <p>Add-ons help enhance your gaming experience.</p>
@@ -63,12 +64,12 @@ export default function Addons({setActiveStep, isYearly, addons, setAddons}){
 
         </form>
       </div>
-      <div className="footer">
+      <Footer>
         <button onClick={handleBackNav} className='back'>Go Back</button>
         <button className="btn" form="add-ons">
           Next Step
         </button>
-      </div>
-    </div>
+      </Footer>
+    </main>
   )
 }

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Footer from "../components/Footer";
 
 export default function PersonalInfo({formData, setFormData, setActiveStep}){
 
@@ -50,7 +51,7 @@ export default function PersonalInfo({formData, setFormData, setActiveStep}){
   }
 
   return (
-    <div>
+    <main>
       <div className="card-wrapper">
         <h1>Personal info</h1>
         <p>Please provide your name, email address, and phone number.</p>
@@ -116,9 +117,9 @@ export default function PersonalInfo({formData, setFormData, setActiveStep}){
           </label>
         </form>
       </div>
-      <div className="footer">
+      <Footer>
         <button form="personal-info" className="btn">Next Step</button>
-      </div>
-    </div>
+      </Footer>
+    </main>
   )
 }
